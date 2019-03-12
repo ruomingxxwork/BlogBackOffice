@@ -3,18 +3,30 @@ from django.contrib.auth.models import User
 
 
 class Category(models.Model):
+    class Meta:
+        db_table = "Category"
+
     name = models.CharField(max_length=100)
 
 
 class Tag(models.Model):
+    class Meta:
+        db_table = "Tag"
+
     name = models.CharField(max_length=70)
 
 
 class Level(models.Model):
+    class Meta:
+        db_table = "Level"
+
     name = models.CharField(max_length=70)
 
 
-class Post(models.Model):
+class Blog(models.Model):
+    class Meta:
+        db_table = "Blog"
+
     title = models.CharField(max_length=70)
 
     body = models.TextField()
