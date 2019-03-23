@@ -4,28 +4,28 @@ from django.contrib.auth.models import User
 
 class Category(models.Model):
     class Meta:
-        db_table = "Category"
+        db_table = "category"
 
     name = models.CharField(max_length=100)
 
 
 class Tag(models.Model):
     class Meta:
-        db_table = "Tag"
+        db_table = "tag"
 
     name = models.CharField(max_length=70)
 
 
 class Level(models.Model):
     class Meta:
-        db_table = "Level"
+        db_table = "level"
 
     name = models.CharField(max_length=70)
 
 
 class Blog(models.Model):
     class Meta:
-        db_table = "Blog"
+        db_table = "blog"
 
     title = models.CharField(max_length=70)
 
@@ -42,10 +42,11 @@ class Blog(models.Model):
 
     author = models.ForeignKey(User, on_delete=models.CASCADE)
 
+
 class Album(models.Model):
     class Meta:
-        db_table = "Album"
-    
+        db_table = "album"
+
     name = models.CharField(max_length=70)
     created_time = models.DateTimeField()
     modified_time = models.DateTimeField()
@@ -56,10 +57,11 @@ def user_directory_path(instance, filename):
     # file will be uploaded to MEDIA_ROOT/user_<id>/<filename>
     return 'user_{0}/{1}'.format(instance.author.id, filename)
 
+
 class Image(models.Model):
     class Meta:
-        db_table = "Image"
-    
+        db_table = "image"
+
     path = models.FileField(upload_to=user_directory_path)
     created_time = models.DateTimeField()
     tags = models.ManyToManyField(Tag, blank=True)
